@@ -2,6 +2,7 @@ package com.scv.dominio;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -19,6 +20,8 @@ public class Veiculo {
 
     private int ano;
 
+    private String placa;
+
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataFabricacao;
 
@@ -30,7 +33,7 @@ public class Veiculo {
         this.dataHoraCadastro = dataHoraCadastro;
     }
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date dataHoraCadastro;
 
     public Veiculo(String marca, String modelo, int ano, Date dataFabricacao) {
@@ -40,8 +43,7 @@ public class Veiculo {
 
     }
 
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -78,6 +80,14 @@ public class Veiculo {
     public void setAno(int ano) {
 
         this.ano = ano;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     public Date getDataFabricacao() {

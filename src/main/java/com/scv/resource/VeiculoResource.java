@@ -21,6 +21,7 @@ public class VeiculoResource {
 
     @GetMapping(value = "/list")
     public List<Veiculo> list() {
+
         return veiculoRepository.findAll();
     }
 
@@ -31,7 +32,7 @@ public class VeiculoResource {
             return new ResponseEntity("Dados do veiculo inválido", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        veiculo.setDataFabricacao(new Date());
+        veiculo.setDataHoraCadastro(new Date());
         veiculo = veiculoRepository.save(veiculo);
         return new ResponseEntity(veiculo, HttpStatus.OK);
 
