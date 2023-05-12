@@ -9,7 +9,6 @@ import java.util.Date;
 @Entity
 @Table(name = "veiculo")
 public class Veiculo {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -18,6 +17,8 @@ public class Veiculo {
 
     private String modelo;
 
+    private String Cor;
+
     private int ano;
 
     private String placa;
@@ -25,18 +26,10 @@ public class Veiculo {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataFabricacao;
 
-    public Date getDataHoraCadastro() {
-        return dataHoraCadastro;
-    }
-
-    public void setDataHoraCadastro(Date dataHoraCadastro) {
-        this.dataHoraCadastro = dataHoraCadastro;
-    }
-
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date dataHoraCadastro;
+    public Veiculo(int id, String marca, String modelo, String cor, int ano, String placa, boolean valor, Date dataFabricacao, Date dataHoraCadastro) {
 
-    public Veiculo(String marca, String modelo, int ano, Date dataFabricacao) {
     }
 
     public Veiculo() {
@@ -72,6 +65,14 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
+    public String getCor() {
+        return Cor;
+    }
+
+    public void setCor(String cor) {
+        Cor = cor;
+    }
+
     public int getAno() {
 
         return ano;
@@ -90,6 +91,7 @@ public class Veiculo {
         this.placa = placa;
     }
 
+
     public Date getDataFabricacao() {
         return dataFabricacao;
     }
@@ -97,6 +99,14 @@ public class Veiculo {
     public void setDataFabricacao(Date dataFabricacao) {
 
         this.dataFabricacao = dataFabricacao;
+    }
+
+    public Date getDataHoraCadastro() {
+        return dataHoraCadastro;
+    }
+
+    public void setDataHoraCadastro(Date dataHoraCadastro) {
+        this.dataHoraCadastro = dataHoraCadastro;
     }
 
 }
