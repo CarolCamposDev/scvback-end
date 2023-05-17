@@ -25,18 +25,18 @@ public class VeiculoResource {
         return veiculoRepository.findAll();
     }
 
+
     @PostMapping("/create")
-    public ResponseEntity<Veiculo> create(@RequestBody Veiculo veiculo) {
-        VeiculoController veiculoController = new VeiculoController();
-        if (veiculoController.isVeiculoValido(veiculo)) {
-            return new ResponseEntity("Dados do veiculo inválido", HttpStatus.INTERNAL_SERVER_ERROR);
+    public ResponseEntity<String> create(@RequestBody Veiculo veiculo) {
+        if (veiculoRepository.existsByPlaca(veiculo.getPlaca())) {  //condição para verificar se existe um veiculo com a mesma placa
+            return ResponseEntity.badRequest().body("A placa já está cadastrada");
         }
 
         veiculo.setDataHoraCadastro(new Date());
         veiculo = veiculoRepository.save(veiculo);
-        return new ResponseEntity(veiculo, HttpStatus.OK);
-
+        return ResponseEntity.ok("Veiculo cadastrado com sucesso");
     }
+
 
     @GetMapping("getById/{id}")
     public Optional<Veiculo> getById(@PathVariable(value = "id") int id) {

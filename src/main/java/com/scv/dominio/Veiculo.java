@@ -21,6 +21,7 @@ public class Veiculo {
 
     private int ano;
 
+    @Column(unique = true) // Adiciona a restrição de unicidade
     private String placa;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
@@ -28,10 +29,10 @@ public class Veiculo {
 
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date dataHoraCadastro;
+
     public Veiculo(int id, String marca, String modelo, String cor, int ano, String placa, boolean valor, Date dataFabricacao, Date dataHoraCadastro) {
 
     }
-
     public Veiculo() {
 
     }

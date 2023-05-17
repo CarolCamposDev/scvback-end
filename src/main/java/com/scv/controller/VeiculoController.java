@@ -1,10 +1,16 @@
 package com.scv.controller;
 
 import com.scv.dominio.Veiculo;
+import com.scv.repository.VeiculoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-
+@RestController
 public class VeiculoController {
+
+    @Autowired
+    private VeiculoRepository veiculoRepository;
+
 
     //verifica se o objeto veiculo é válido com base em validações individuais dos atributos
     public boolean isVeiculoValido(Veiculo veiculo) {
